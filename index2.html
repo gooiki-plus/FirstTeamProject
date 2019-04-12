@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <!-- KEY = https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAkLn-u_TURvuTslpYbWga6e7P4ACqZZQE -->
+</head>
+
+<body> 
+    
+<div id="filesubmit">
+    <input type="file" class="file-select" accept="image/*"/>
+    <button class="file-submit">SUBMIT</button>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDX1cgJaNiRT8ynhSrjLs_jnYGgeIO8_QA",
+    authDomain: "image-upload-8a4d2.firebaseapp.com",
+    databaseURL: "https://image-upload-8a4d2.firebaseio.com",
+    projectId: "image-upload-8a4d2",
+    storageBucket: "image-upload-8a4d2.appspot.com",
+    messagingSenderId: "1076296379594"
+  };
+  firebase.initializeApp(config);
+
+  const storageService = firebase.storage();
+  const storageRef = storageService.ref();
+
+  document.querySelector('.file-select').addEventListener("change", handleFileUploadChange);
+  document.querySelector('.file-submit').addEventListener("click", handleFileUploadSubmit);
+
+  let selectedFile;
+  function handleFileUploadChange(e) {
+    selectedFile = e.target.files[0];
+  }; 
+
+  function handleFileUploadSubmit(e) {
+  const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
+  uploadTask.on('state_changed', (snapshot) => {
+  // Observe state change events such as progress, pause, and resume
+  }, (error) => {
+    // Handle unsuccessful uploads
+    console.log(error);
+  }, () => {
+     // Do something once upload is complete
+     console.log('success');
+  });
+ }
+
+</script>
+
+
+
+</body>
+</html>
