@@ -1,0 +1,66 @@
+html, body {
+    margin: 0 auto;
+}
+.jumbotron-fluid {
+margin-top: 90px;
+margin-left: 150px;
+/* margin-right: 150px; */
+float: right;
+}
+h1 {
+    color: orange;
+}
+.navbar {
+    padding-left: 60px;
+
+}
+.banner {
+    
+    color: black;
+    text-align: center;
+    padding-top: 150px;
+}
+.container {
+    margin-top: 85px;
+    background-color: darkorange;
+    height: 450px;
+}
+button {
+    margin-top: 30px;
+    border-radius: 10px;
+    background-color: yellow;
+    font-size: 18px;
+}
+.image-container {
+    width: 300px;
+    height: 350px;
+    float: left;
+    background-color: yellow;
+    margin-left: 300px;
+    margin-top: 60px;
+    
+}
+.reveal-container {
+    width: 300px;
+    height: 350px;
+    display: inline-block;
+    border: 1px ridge black;
+    margin-left: 80px;
+    margin-top: 60px;
+
+}
+.content {
+    min-height: 35%;
+}
+    .content-inside {
+    padding: 20px;
+    padding-bottom: 30px;
+}
+    .footer {
+    height: 30px;
+    padding: 20px;
+    text-align: center;
+    font-size: 13px;
+    clear: both;
+    
+}
