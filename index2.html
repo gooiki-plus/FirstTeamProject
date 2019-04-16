@@ -4,7 +4,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>title</title>
+    <title>Project: Gooiwi Plus</title>
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
     <!-- KEY = https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAkLn-u_TURvuTslpYbWga6e7P4ACqZZQE -->
 </head>
@@ -16,7 +18,7 @@
     <button class="file-submit">SUBMIT</button>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <script>
   // Initialize Firebase
   var config = {
@@ -28,10 +30,10 @@
     messagingSenderId: "1076296379594"
   };
   firebase.initializeApp(config);
-
+  // Declaration of variables for Firebase
   const storageService = firebase.storage();
   const storageRef = storageService.ref();
-
+  
   document.querySelector('.file-select').addEventListener("change", handleFileUploadChange);
   document.querySelector('.file-submit').addEventListener("click", handleFileUploadSubmit);
 
