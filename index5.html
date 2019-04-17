@@ -84,10 +84,6 @@
           // You get your url from here 
           console.log('File available at', downloadURL); 
           var imgURL = downloadURL;
-//"https://firebasestorage.googleapis.com/v0/b/image-upload-8a4d2.appspot.com/o/images%2F3.jpg?alt=media&token=7c147967-12af-4e35-aac6-a8aab4a97c8a";
-
-           // "https://firebasestorage.googleapis.com/v0/b/image-upload-8a4d2.appspot.com/o/images%2F3.jpg?alt=media&token=df7de639-a187-4f8c-9903-f02bb24a975b";
-                //"https://www.dollargeneral.com/media/catalog/product/cache/image/700x700/e9c3970ab036de70892d86c6d221abfe/0/0/00012000809941_1.jpg";
             var endpoint = "https://vision.googleapis.com/v1/images:annotate?key=";
             var key = "AIzaSyC37mOFYhbapDV3l3Z7v88pCuPfNJvw5KM"
 
@@ -123,27 +119,29 @@
                     console.log('error', err.responseText);
                 })
         });
+        var queUrl= "https://WikipediaraygorodskijV1.p.rapidapi.com/comparePages";
+$.ajax({
+    url: queUrl,
+    headers: {
+        "X-RapidAPI-Host": "WikipediaraygorodskijV1.p.rapidapi.com",
+        "X-RapidAPI-Key": "b4067e5b7amshd2c9fc4a2f694e5p12e45djsn54f06968743b",
+        "Content-Type" : "application/json"
+        
+    },
+    method: 'POST',
+    dataType: 'json',
+    data: pageIds,
+    success: function(data){
+        var results= data.informationToGet,
 
-          
+      console.log('succes: '+ data);
+    }
+  });
           });
   }
+  
       
-  var queUrl= "https://WikipediaraygorodskijV1.p.rapidapi.com/comparePages"+ "&api = b4067e5b7amshd2c9fc4a2f694e5p12e45djsn54f06968743b";
-    function GetAll (){
-    $.ajax({
-    type:'GET',
-    url: queUrl,
-    headers:{ accept:
-    //"X-RapidAPI-Host": "WikipediaraygorodskijV1.p.rapidapi.com",
-//"X-RapidAPI-Key": "b4067e5b7amshd2c9fc4a2f694e5p12e45djsn54f06968743b",
-    'Content-Type : application/x-www-form-urlencoded'
-    }
-  })  
- .done(function(result){
-    console.log ("result")
-  //console.log(result.status, result.headers, result.body);
-  })
-};
+  
 
 
         
