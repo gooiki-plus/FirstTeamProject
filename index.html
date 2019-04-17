@@ -1,50 +1,160 @@
 <!DOCTYPE html>
 <html>
     <!-- head section -->
-    <head>
+<head>
     <!-- title section -->
     <title>Gooiki Plus</title>
 
-    <links section>
+    <!-- <links section> -->
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 </head>
 <body>
 
       
       <!-- nav bar section -->
-      <nav class="navbar navbar-light bg-light" style="background-color: orange">
+      <nav class="navbar navbar-light bg-white" style="background-color: orange">
         <span class="navbar-brand mb-0 h1">Gooiki Plus</span>
       </nav>
       
       <!-- banner section -->
-      <div class="container">
+      <div class="container1">
         <div class="banner">
-            <h2>Gooiki Plus tracks where your images appear online.</h2>
-            <button type="button">Submit</button>
+            <h2> Gooiki Plus tracks where your<br>images appear online.</h2>
+
+            <div id="filesubmit">
+            <button class="btn">Upload a file</button>
+            <input type="file" class="file-select" accept="image/*" onchange="readURL(this);"/>
+            </div>  
+            <img id="pic" src="#">
+   
+</div> 
+</div>
+            
 
       </div>
         </div>
+        
+        <div class="subheading">
+            <h5><a href="#overview">Overview</a><h5>
+            <h5><a href="#howitworks">How Gooiki Plus works</a></h5>
+            <h5><a href="#features">Features</a></h5>
+        </div>
+
+        <div class="gooiki-content">
+            <h3 id= "overview">For anyone who needs to track their<br>proprietary images</h3>
+            <p id="overview-text">Gooiki takes your pictures and runs them through Google’s Cloud Vision API. Using <br> Google’s Machine learning prowess, we are able to pull out information, like the logos in your pictures! <br> We then run that information through Wikipedia for you, so you instantaneously become an expert on what is in your photo!
+            </div>
 
         <!-- image/reveal section -->
         <div class="main-section">
-        <div class="image-container"></div>
-        <div class="reveal-container"></div>
+        <div id="myImage"></div>
+        <div id="results"></div>
         </div>
 
-        <!-- <footer section -->
+        <!-- how it works section -->
+        <div class="function-section">
+            <div id="howitworks">
+                <h3>How Gooiki Plus works</h3>
+<div class="row">
+                <div class="branch">
+                <div class="col-md-6">
+                    <p id="overviewtext"></p>Use <strong> Google Cloud Vision </strong> to build and <strong> deploy fast, high accuracy models </strong> to classify <strong> images. </strong></p>
+                </div>
+                </div>
+                <div class="branch">
+                <div class="col-md-6">
+                    <p id="overviewtext"> Take a <strong> picture. </strong> </p>
+                </div>
+                 </div>
+ </div>
+<div class="row">
+                <div class="branch">
+                    <div class="col-md-6">
+                    <p id="overviewtext">Using our <strong>image recognintion technology,</strong>
+                        we use <strong>Google Cloud Vision</strong> & <strong>Wikipedia</strong> APIs to obtain accature data. </p>
+                    
+                    </div>
+                </div>
+                <div class="branch">
+                    <div class="col-md-6">
+                        <p id="overviewtext"> It can <strong>review your images </strong> and esitmate the likelihood that any given <strong> image includes content. </strong> </p>
+                    </div>
+                </div>
+ </div>
+
+            </div>
+                    
+                
+             </div>
+            
+
+        <!-- FEATURES SECTION -->
+    <div id ="features">
+         <div class="row">
+                <div class="col-md-3">
+                <i class="fas fa-project-diagram"></i>
+                <br>
+                <span>Search and flitering.</span>
+            </div>
+
+            <div class="col-md-3">
+                <i class="fas fa-file-upload"></i>
+                <br>
+                <span>Upload your image from your browser.</span>
+            </div>
+
+            <div class="col-md-3">
+                <i class="fas fa-brain"></i>
+                <br>
+                <span>Knowledge is power.</span>
+             </div>
+
+             <div class="col-md-3">
+                <i class="fas fa-user-friends"></i> 
+                <br>
+                <span>  +  User-friendly</span>
+            </div>
+        </div>
+        
+            <!-- <span>Upload your images from your browser</span> -->
+            <!-- <span>test uploading file</span> -->
+        </div>
+            
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+            </div>
+
+        <!--footer section -->
         <div class="content">
         <div class="content-inside">
-                    
-                    
+
         </div>
         </div>
         <footer class="footer">
-        </footer>
-
+            <!-- <p>Gooiki Plus</p> -->
+            
+         </footer>
+        
+                    
     
 </body>
 </html>
