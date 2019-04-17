@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Project: Gooiwi Plus</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+ 
+    <!-- KEY = https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAkLn-u_TURvuTslpYbWga6e7P4ACqZZQE -->
+</head>
+
+<body> 
+    
+<div id="filesubmit">
+    <input id="file" type="file" class="file-select" accept="image/*"/>
+    <button class="file-submit">SUBMIT</button>
+</div>
+<div class="container">
+  <div class="row">
+      <div class="col-6">
+          <p>This image: <img id="myImage" src=""></p>
+      </div>
+      <div class="col-6">
+          <p>has this logo: 
+            <h2 id="result"></h2>
+            <h2 id="result2"></h2>
+            <h2 id="result3"></h2>
+            <h2 id="result4"></h2>
+          </p>
+      </div>
+  </div>
+
+</div>
+
+
+<script>
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDX1cgJaNiRT8ynhSrjLs_jnYGgeIO8_QA",
+    authDomain: "image-upload-8a4d2.firebaseapp.com",
+    databaseURL: "https://image-upload-8a4d2.firebaseio.com",
+    projectId: "image-upload-8a4d2",
+    storageBucket: "image-upload-8a4d2.appspot.com",
+    messagingSenderId: "1076296379594"
+  };
+  firebase.initializeApp(config);
+
+  // Declaration of variables for Firebase
+  const storageService = firebase.storage();
+  const storageRef = storageService.ref();
+  
+  document.querySelector('.file-select').addEventListener("change", handleFileUploadChange);
+  document.querySelector('.file-submit').addEventListener("click", handleFileUploadSubmit);
+
+  let selectedFile;
+  function handleFileUploadChange(e) {
+    selectedFile = e.target.files[0];
+  }; 
+
+  function handleFileUploadSubmit(e) {
+  const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
+  uploadTask.on('state_changed', 
+    (snapshot) => {
+    // Observe state change events such as progress, pause, and resume
+    }, 
+    (error) => {
+      // Handle unsuccessful uploads
+      console.log(error);
+    }, 
+    () => {
+      // Do something once upload is complete
+      console.log('success')
+      //function() { 
+        var u = uploadTask.snapshot;
+        // get the uploaded image url back 
+        var urlfromFire= u.ref.getDownloadURL().then( 
+          function(downloadURL) { 
+          // You get your url from here 
+          console.log('File available at', downloadURL); 
+          var imgURL = downloadURL;
+"https://firebasestorage.googleapis.com/v0/b/image-upload-8a4d2.appspot.com/o/images%2F3.jpg?alt=media&token=7c147967-12af-4e35-aac6-a8aab4a97c8a";
+
+           // "https://firebasestorage.googleapis.com/v0/b/image-upload-8a4d2.appspot.com/o/images%2F3.jpg?alt=media&token=df7de639-a187-4f8c-9903-f02bb24a975b";
+                //"https://www.dollargeneral.com/media/catalog/product/cache/image/700x700/e9c3970ab036de70892d86c6d221abfe/0/0/00012000809941_1.jpg";
+            var endpoint = "https://vision.googleapis.com/v1/images:annotate?key=";
+            var key = "AIzaSyC37mOFYhbapDV3l3Z7v88pCuPfNJvw5KM"
+
+            var req = {
+                "requests": [{
+                    "image": {
+                        "source": {
+                            "imageUri": imgURL
+                        }
+                    },
+                    "features": [{
+                            "type": "LABEL_DETECTION",
+                            "maxResults": 4
+                        }
+                    ]
+                }]
+            };
+
+            $.ajax(endpoint + key, {
+                    "method": "POST",
+                    "contentType": 'application/json; charset=utf-8',
+                    "data": JSON.stringify(req)
+                })
+                .then(function (res) {
+                    console.log('success', res);
+                    $("#myImage").attr("src", imgURL);
+                    $("#result").text(res.responses[0].labelAnnotations[0].description);
+                    $("#result2").text(res.responses[0].labelAnnotations[1].description);
+                    $("#result3").text(res.responses[0].labelAnnotations[2].description);
+                    $("#result4").text(res.responses[0].labelAnnotations[3].description);
+                })
+                .catch(function (err) {
+                    console.log('error', err.responseText);
+                })
+        });
+
+          // print the image url  
+    
+          //document.getElementById().removeAttribute('disabled'); 
+          })
+      //};
+
+
+};
+
+ 
+        
+        
+
+
+</script>
+</body>
+</html>
