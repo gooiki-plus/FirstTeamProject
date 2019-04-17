@@ -198,7 +198,7 @@ input {
     border: 7px dotted #FFCD28;
     width: 280px;
     height: 70px;
-    margin-left: 300px;
+    margin-left: 310px;
     /* color:white; */
     font-size: 17px;
     font-family: 'Varela Round', sans-serif;
@@ -217,7 +217,7 @@ input {
     font-family: 'system-ui';
     float: right;
     display: inline-block;
-    margin-right: 300px;
+    margin-right: 310px;
 }
 
    .file-submit:hover {
