@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <p>This image: <img id="myImage" src=""></p>
+            </div>
+            <div class="col-6">
+                <p>has this logo: <h2 id="result"></h2>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous">
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var imgURL =
+           // "https://firebasestorage.googleapis.com/v0/b/image-upload-8a4d2.appspot.com/o/images%2F3.jpg?alt=media&token=df7de639-a187-4f8c-9903-f02bb24a975b";
+                //"https://www.dollargeneral.com/media/catalog/product/cache/image/700x700/e9c3970ab036de70892d86c6d221abfe/0/0/00012000809941_1.jpg";
+            var endpoint = "https://vision.googleapis.com/v1/images:annotate?key=";
+            var key = "AIzaSyC37mOFYhbapDV3l3Z7v88pCuPfNJvw5KM"
+
+            var req = {
+                "requests": [{
+                    "image": {
+                        "source": {
+                            "imageUri": imgURL
+                        }
+                    },
+                    "features": [{
+                            "type": "LOGO_DETECTION",
+                            "maxResults": 3
+                        },
+                        {
+                            "type": "LABEL_DETECTION"
+                        }
+                    ]
+                }]
+            };
+
+            $.ajax(endpoint + key, {
+                    "method": "POST",
+                    "contentType": 'application/json; charset=utf-8',
+                    "data": JSON.stringify(req)
+                })
+                .then(function (res) {
+                    console.log('success', res);
+                    $("#myImage").attr("src", imgURL);
+                    $("#result").text(res.responses[0].logoAnnotations[0].description)
+                })
+                .catch(function (err) {
+                    console.log('error', err.responseText);
+                })
+        })
+    </script>
+</body>
+
+</html>
