@@ -2,6 +2,7 @@
 <html>
     <!-- head section -->
 <head>
+    <meta charset="UTF-8">
     <!-- title section -->
     <title>Gooiki Plus</title>
 
@@ -16,6 +17,9 @@
     <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
 </head>
 <body>
 
@@ -31,10 +35,12 @@
             <h2> Gooiki Plus tracks where your<br>images appear online.</h2>
 
             <div id="filesubmit">
-            <button class="btn">Upload a file</button>
+           
             <input type="file" class="file-select" accept="image/*" onchange="readURL(this);"/>
-            </div>  
             <img id="pic" src="#">
+            <button class="file-submit">Submit</button>
+            </div>  
+            
    
 </div> 
 </div>
@@ -55,9 +61,14 @@
             </div>
 
         <!-- image/reveal section -->
-        <div class="main-section">
-        <div id="myImage"></div>
-        <div id="results"></div>
+        <div class="results">
+        <img id="myImage" src="">
+        <div id="results">
+            <p id="result"></p>
+            <p id="result2"></p>
+            <p id="result3"></p>
+            <p id="result4"></p>
+        </div>
         </div>
 
         <!-- how it works section -->
@@ -153,6 +164,111 @@
             <!-- <p>Gooiki Plus</p> -->
             
          </footer>
+
+<script>
+  function readURL(input) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $('#pic').attr('src', e.target.result).width(200).height(150);
+    };
+    reader.readAsDataURL(input.files[0]);
+  } 
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDX1cgJaNiRT8ynhSrjLs_jnYGgeIO8_QA",
+    authDomain: "image-upload-8a4d2.firebaseapp.com",
+    databaseURL: "https://image-upload-8a4d2.firebaseio.com",
+    projectId: "image-upload-8a4d2",
+    storageBucket: "image-upload-8a4d2.appspot.com",
+    messagingSenderId: "1076296379594"
+  };
+  firebase.initializeApp(config);
+
+  // Declaration of variables for Firebase
+  const storageService = firebase.storage();
+  const storageRef = storageService.ref();
+  
+  document.querySelector('.file-select').addEventListener("change", handleFileUploadChange);
+  document.querySelector('.file-submit').addEventListener("click", handleFileUploadSubmit);
+
+  let selectedFile;
+  function handleFileUploadChange(e) {
+    selectedFile = e.target.files[0];
+  }; 
+
+  function handleFileUploadSubmit(e) {
+  const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
+  uploadTask.on('state_changed', 
+    (snapshot) => {
+    // Observe state change events such as progress, pause, and resume
+    }, 
+    (error) => {
+      // Handle unsuccessful uploads
+      console.log(error);
+    }, 
+    () => {
+      // Do something once upload is complete
+      console.log('success')
+      var u = uploadTask.snapshot;
+      // get the uploaded image url back 
+      var urlfromFire= u.ref.getDownloadURL().then( 
+        function(downloadURL) { 
+        // get url from here 
+          console.log('File available at', downloadURL); 
+          var imgURL = downloadURL;
+          var endpoint = "https://vision.googleapis.com/v1/images:annotate?key=";
+          var key = "AIzaSyAkLn-u_TURvuTslpYbWga6e7P4ACqZZQE"
+
+            var req = {
+                "requests": [{
+                    "image": {
+                        "source": {
+                            "imageUri": imgURL
+                        }
+                    },
+                    "features": [{
+                            "type": "LABEL_DETECTION",
+                            "maxResults": 10
+                        },
+                        { 
+                            "type": "LOGO_DETECTION",
+                            "maxResults": 3
+                        } 
+
+                    ]
+                }]
+            };
+
+            $.ajax(endpoint + key, {
+                    "method": "POST",
+                    "contentType": 'application/json; charset=utf-8',
+                    "data": JSON.stringify(req)
+                })
+                .then(function (res) {
+                    console.log('success', res);
+                    $("#pic").hide(); 
+                    $("#myImage").attr("src", imgURL).width(400);
+                    $("#result").text(res.responses[0].labelAnnotations[0].description);
+                    $("#result2").text(res.responses[0].labelAnnotations[1].description);
+                    $("#result3").text(res.responses[0].labelAnnotations[2].description);
+                    $("#result4").text(res.responses[0].labelAnnotations[3].description);
+                })
+                .catch(function (err) {
+                    console.log('error', err.responseText);
+                })
+        }); 
+  })
+
+
+};
+
+ 
+        
+        
+
+
+</script>
         
                     
     

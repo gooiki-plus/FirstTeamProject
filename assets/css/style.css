@@ -32,11 +32,13 @@
 }
    #myImage {
     width: 400px;
-    height: 350px;
+    height:350px;
+    object-fit: scale-down;
     float: left;
     background-color: orange;
     margin-left: 360px;
     margin-top: 100px;
+
 }
     #results {
     width: 400px;
@@ -45,7 +47,6 @@
     border: 1px ridge black;
     margin-top: 100px;
     margin-left: 70px;
-
 }
     .subheading {/* border-bottom */
                 text-align: center;
@@ -184,25 +185,26 @@ span{  /* icons text */
       position: relative;
       left: 0;
       top: 0;
-      opacity: 0;
-
-  }/* file button */
+      opacity: 100;
+  }
+  /* file button */
   button [type='file'] {
-      color: transparent;
+      color: blue;
 }
-  .btn {
+  .file-submit {
     margin-top: 30px;
     border: 7px dotted #FFCD28;
-    width: 600px;
+    width: 400px;
     height: 70px;
-    position: absolute;
-    margin-right: 50px;
-    color: white;
+    
+    color: green;
     font-size: 17px;
     font-family: 'Varela Round', sans-serif;
-
+    float: right;
+    display: inline-block;
+    margin-right: 50px;
 }
-   .btn:hover {
+   .file-submit:hover {
         background-color: white;
     }
 
@@ -214,10 +216,33 @@ span{  /* icons text */
     position: relative;
 }
 #pic {
-    opacity: 0;
+    opacity: 100;
 } 
 /* how its work section */
 
 strong {
     color: orange;
+}
+
+#result,
+#result2,
+#result3,
+#result4 {
+    color: black;
+    line-height: 1;
+    margin-left: 15px;
+}
+
+input {
+    margin-top: 30px;
+    border: 7px dotted #FFCD28;
+    width: 400px;
+    height: 70px;
+    margin-left: 50px;
+    color:white;
+    font-size: 17px;
+    font-family: 'Varela Round', sans-serif;
+    float: left;
+    background-color: white;
+    display: inline-block;
 }
