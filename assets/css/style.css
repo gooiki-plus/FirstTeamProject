@@ -1,4 +1,4 @@
-    html, body {
+html, body {
     margin: 0 auto;
     scroll-behavior:  smooth;
 }
@@ -32,11 +32,13 @@
 }
    #myImage {
     width: 400px;
-    height: 350px;
+    height:350px;
+    object-fit: scale-down;
     float: left;
     background-color: orange;
     margin-left: 360px;
     margin-top: 100px;
+
 }
     #results {
     width: 400px;
@@ -45,7 +47,6 @@
     border: 1px ridge black;
     margin-top: 100px;
     margin-left: 70px;
-
 }
     .subheading {/* border-bottom */
                 text-align: center;
@@ -184,40 +185,70 @@ span{  /* icons text */
       position: relative;
       left: 0;
       top: 0;
-      opacity: 0;
-
-  }/* file button */
-  button [type='file'] {
-      color: transparent;
-}
-  .btn {
-    margin-top: 30px;
-    border: 7px dotted #FFCD28;
-    width: 600px;
-    height: 70px;
-    position: absolute;
-    margin-right: 50px;
-    color: white;
-    font-size: 17px;
-    font-family: 'Varela Round', sans-serif;
-
-}
-   .btn:hover {
-        background-color: white;
-    }
-
-
-   input {
+      opacity: 100;
+  }
+/* CHOOSE FILE BUTTON */
+input {
     opacity: 0;
-    padding-left: 260px;
+    padding-top: 15px;
+    padding-left: 75px;
     padding-bottom: 50px;
     position: relative;
+    margin-top: 30px;
+    border: 7px dotted #FFCD28;
+    width: 280px;
+    height: 70px;
+    margin-left: 300px;
+    /* color:white; */
+    font-size: 17px;
+    font-family: 'Varela Round', sans-serif;
+    float: left;
+    display: inline-block;
 }
-#pic {
+  /* SUBMIT BUTTON */
+  .file-submit {
+    margin-top: 30px;
+    border: 7px dotted #FFCD28;
+    width: 280px;
+    height: 70px;
+    color: black;
+    background-color: transparent;
+    font-size: 17px;
+    font-family: 'system-ui';
+    float: right;
+    display: inline-block;
+    margin-right: 300px;
+}
+
+   .file-submit:hover {
+        background-color:white;
+    }
+    /* Choose File position text */
+    
+input #pic {
     opacity: 0;
 } 
 /* how its work section */
+/* BOLD element */
 
 strong {
     color: orange;
+}
+/* RESULTS */
+#result,
+#result2,
+#result3,
+#result4 {
+    color: black;
+    line-height: 1;
+    margin-left: 15px;
+}
+/* CHOOSE FILE BUTTON */
+#slot {
+    color: black;
+    background-color: white;
+    width: 100px;
+    padding-top:3px;
+    margin-left: 80px;
+    height: 30px;
 }
