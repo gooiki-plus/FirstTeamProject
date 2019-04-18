@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>woo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1> wiki Search</h1>
+        <input type="text" id="searchTerm">
+        <button id="search" class="btn btn-default btn-lg vis-button">Submit</button>
+        
+    
+
+    <div id="output"></div>
+ </div>
+    
+    
+    <script>
+
+        $("#search").on("click", function () {
+            console.log ("welcome");
+            var searchTerm = $("#searchTerm").val();
+            var queUrl = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + searchTerm + "&format=json&callback=?";
+            
+$.ajax({
+    url: queUrl,
+    type: 'GET',
+    contentType: "aplication/json; charsetu=utf-8",
+    async:false,
+    dataType:"json",
+    success: function(data, status, jqXHR){
+        //console.log(data);  
+        $("#output").html();
+        var term = data[1][1];
+        var summary = data[2][1];
+        var link = data[3][1];
+
+var infoDiv = $("<div>");
+var termEl = $("<h1>").text(term);
+var summaryEl = $("<p>").text(summary);
+var linkEl = $("<a>").text(term).attr("href",link);
+
+infoDiv.append(termEl,summaryEl,linkEl);
+
+$("#output").prepend(infoDiv);
+
+
+       
+            }    
+    })
+    .done(function(){
+        
+    })
+    .fail (function(){
+console.log ("error");
+    })
+    .always (function(){
+        console.log('complete');
+    }
+    )
+    
+    });
+        
+  </script>
+
+</body>
+</html>
