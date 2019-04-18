@@ -24,17 +24,16 @@
 <body>
 
       
-      <!-- logo section -->
+      <!-- nav bar section -->
       <nav class="navbar navbar-light bg-white" style="background-color: orange">
         <span class="navbar-brand mb-0 h1">Gooiki Plus</span>
       </nav>
-
-      <!-- orange banner section -->
+      
+      <!-- banner section -->
       <div class="container1">
         <div class="banner">
             <h2> Gooiki Plus tracks where your<br>images appear online.</h2>
 
-            <!-- file/submit section -->
             <div id="filesubmit">
             <input type="file" class="file-select" accept="image/*" onchange="readURL(this);">
             <img id="pic" src="#">
@@ -54,20 +53,18 @@
         </div>
 
         <div class="gooiki-content">
-            <div class="col-sm-12 col-md-12 col-sm-12">
             <h3 id= "overview">For anyone who needs to track their<br>proprietary images</h3>
-            <p id="overview-text">Gooiki Plus takes your pictures and runs them through Google’s Cloud Vision API.<br> Using Google’s Machine learning prowess, we are able to pull out information, like the logos in your pictures! <br> We then run that information through Wikipedia for you, so you instantaneously become an expert on what is in your photo.
+            <p id="overview-text">Gooiki takes your pictures and runs them through Google’s Cloud Vision API. Using <br> Google’s Machine learning prowess, we are able to pull out information, like the logos in your pictures! <br> We then run that information through Wikipedia for you, so you instantaneously become an expert on what is in your photo!
             </div>
-        </div>
 
         <!-- image/reveal section -->
         <div class="results">
         <img id="myImage" src="">
         <div id="results">
-            <p id="result"></p>
-            <p id="result2"></p>
-            <p id="result3"></p>
-            <p id="result4"></p>
+            <!-- <a href="" id="result"></a>
+            <a href="" id="result2"></a>
+            <a href="" id="result3"></a>
+            <a href="" id="result4"></a> -->
         </div>
         </div>
 
@@ -75,34 +72,37 @@
         <div class="function-section">
             <div id="howitworks">
                 <h3>How Gooiki Plus works</h3>
-    <div class="row">
+<div class="row">
                 <div class="branch">
-                <div class="col-sm-6 col-md-6 col-lg-6">
-                    <p id="branchtext">Use <strong> Google Cloud Vision </strong> to build and <strong> deploy fast, high accuracy models </strong> to classify <strong> images. </strong></p>
+                <div class="col-md-6">
+                    <p id="overviewtext"></p>Use <strong> Google Cloud Vision </strong> to build and <strong> deploy fast, high accuracy models </strong> to classify <strong> images. </strong></p>
                 </div>
                 </div>
                 <div class="branch">
-                <div class="col-sm-6 col-md-6 col-lg-6>">
-                    <p id="branchtext"><br>Take a <strong> picture. </strong> </p>
+                <div class="col-md-6">
+                    <p id="overviewtext"><br>Take a <strong> picture. </strong> </p>
                 </div>
                  </div>
-    </div>
-    <div class="row">
+ </div>
+<div class="row">
                 <div class="branch">
-                    <div class="col-sm-6 col-md-6 col-lg-6>">
-                    <p id="branchtext">Using our <strong>image recognition technology,</strong>
-                        we use <strong>GCV</strong> & <strong>Wikipedia</strong> APIs to <strong>obtain local data.</strong> </p>
+                    <div class="col-md-6">
+                    <p id="overviewtext">Using our <strong>image recognintion technology,</strong>
+                        we use <strong>Google Cloud Vision</strong> & <strong>Wikipedia</strong> APIs to obtain accature data. </p>
                     
                     </div>
                 </div>
                 <div class="branch">
-                    <div class="col-sm-6 col-md-6 col-lg-6>">
-                        <p id="branchtext"> It can <strong>review your images </strong> and estimate the likelihood that any given <strong> image includes content. </strong> </p>
+                    <div class="col-md-6">
+                        <p id="overviewtext"> It can <strong>review your images </strong> and esitmate the likelihood that any given <strong> image includes content. </strong> </p>
                     </div>
                 </div>
-    </div>
-    </div>
-    </div>
+ </div>
+
+            </div>
+                    
+                
+             </div>
             
 
         <!-- FEATURES SECTION -->
@@ -111,7 +111,7 @@
                 <div class="col-sm-3 col-md-3 col-lg-3">
                 <i class="fas fa-project-diagram"></i>
                 <br>
-                <span>Search and filtering.</span>
+                <span>Search and flitering.</span>
             </div>
 
             <div class="col-sm-3 col-md-3 col-lg-3">
@@ -129,7 +129,7 @@
              <div class="col-sm-3 col-md-3 col-lg-3">
                 <i class="fas fa-user-friends"></i> 
                 <br>
-                <span>+ User-friendly.</span>
+                <span>  +  User-friendly</span>
             </div>
         </div>
         
@@ -141,27 +141,9 @@
             </div>
 
         <!--footer section -->
-        <footer class="miscellaneous">
-            <div class="col-sm-12 col-md-12 col-lg-12">
+        <footer class="footer">
             <h1> Gooiki Plus</h1>
-            <div id="about">Gooiki Plus is a fusion term between<br>Google and Wikipedia.
-                The future is <br> being able to know all about what you are <br> looking at in real time,
-                the future is now.<br>
-                
-            <div id="sabout"><br>Our mission is to make your images searchable.</p>
-            </div>
-
-            
-            <div class="lfooter">
-                <div id="copyright"> @ 2019 Gooiki Plus </div>
-            
-            </div>
-        </div>
-
-               
-
-
-        
+            <!-- <p>Gooiki Plus</p> -->
             
          </footer>
 
@@ -242,10 +224,53 @@
                     console.log('success', res);
                     $("#pic").hide(); 
                     $("#myImage").attr("src", imgURL).width(400);
-                    $("#result").text(res.responses[0].labelAnnotations[0].description);
-                    $("#result2").text(res.responses[0].labelAnnotations[1].description);
-                    $("#result3").text(res.responses[0].labelAnnotations[2].description);
-                    $("#result4").text(res.responses[0].labelAnnotations[3].description);
+                    $("results").empty();
+
+                    for(var i = 0; i <res.responses[0].labelAnnotations.length; i++){
+                        console.log(res.responses[0].labelAnnotations[i])
+                        let newButton = $("<button/>", 
+                        {
+                            text:res.responses[0].labelAnnotations[i].description,
+                        })
+
+                        $(newButton).on("click", function(){
+                            var queUrl = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + $(this).text() + "&format=json&callback=?";
+                            $.ajax({
+                                url: queUrl,
+                                type: 'GET',
+                                contentType: "aplication/json; charsetu=utf-8",
+                                async:false,
+                                dataType:"json",
+                                success: function(data, status, jqXHR){
+                                    window.location.href = data[3][0];
+                                    console.log(data);
+                                    // $("#output").html();
+                                    // var term = data[1][1];
+                                    // var summary = data[2][1];
+                                    // var link = data[3][1];
+                                    
+                                    // var infoDiv = $("<div>");
+                                    // var termEl = $("<h1>").text(term);
+                                    // var summaryEl = $("<p>").text(summary);
+                                    // var linkEl = $("<a>").text(term).attr("href",link);
+                                    
+                                    // infoDiv.append(termEl,summaryEl,linkEl);
+                                    
+                                    // $("#output").prepend(infoDiv);
+                                }
+                            })
+                            .done(function(){})
+                            .fail (function(){ console.log ("error");})
+                            .always (function(){ console.log('complete');})
+                        });
+
+                        $("#results").append(newButton)
+                    }
+
+                    // $("#result").text(res.responses[0].labelAnnotations[0].description);
+                    // $("#result2").text(res.responses[0].labelAnnotations[1].description);
+                    // $("#result3").text(res.responses[0].labelAnnotations[2].description);
+                    // $("#result4").text(res.responses[0].labelAnnotations[3].description);
                 })
                 .catch(function (err) {
                     console.log('error', err.responseText);
@@ -253,6 +278,12 @@
         }); 
   })
 };
+ 
+        
+        
 </script>
+        
+                    
+    
 </body>
 </html>
