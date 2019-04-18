@@ -24,16 +24,17 @@
 <body>
 
       
-      <!-- nav bar section -->
+      <!-- logo section -->
       <nav class="navbar navbar-light bg-white" style="background-color: orange">
         <span class="navbar-brand mb-0 h1">Gooiki Plus</span>
       </nav>
-      
-      <!-- banner section -->
+
+      <!-- orange banner section -->
       <div class="container1">
         <div class="banner">
             <h2> Gooiki Plus tracks where your<br>images appear online.</h2>
 
+            <!-- file/submit section -->
             <div id="filesubmit">
             <input type="file" class="file-select" accept="image/*" onchange="readURL(this);">
             <img id="pic" src="#">
@@ -53,9 +54,11 @@
         </div>
 
         <div class="gooiki-content">
+            <div class="col-sm-12 col-md-12 col-sm-12">
             <h3 id= "overview">For anyone who needs to track their<br>proprietary images</h3>
-            <p id="overview-text">Gooiki takes your pictures and runs them through Google’s Cloud Vision API. Using <br> Google’s Machine learning prowess, we are able to pull out information, like the logos in your pictures! <br> We then run that information through Wikipedia for you, so you instantaneously become an expert on what is in your photo!
+            <p id="overview-text">Gooiki Plus takes your pictures and runs them through Google’s Cloud Vision API.<br> Using Google’s Machine learning prowess, we are able to pull out information, like the logos in your pictures! <br> We then run that information through Wikipedia for you, so you instantaneously become an expert on what is in your photo.
             </div>
+        </div>
 
         <!-- image/reveal section -->
         <div class="results">
@@ -72,37 +75,34 @@
         <div class="function-section">
             <div id="howitworks">
                 <h3>How Gooiki Plus works</h3>
-<div class="row">
+    <div class="row">
                 <div class="branch">
-                <div class="col-md-6">
-                    <p id="overviewtext"></p>Use <strong> Google Cloud Vision </strong> to build and <strong> deploy fast, high accuracy models </strong> to classify <strong> images. </strong></p>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <p id="branchtext">Use <strong> Google Cloud Vision </strong> to build and <strong> deploy fast, high accuracy models </strong> to classify <strong> images. </strong></p>
                 </div>
                 </div>
                 <div class="branch">
-                <div class="col-md-6">
-                    <p id="overviewtext"><br>Take a <strong> picture. </strong> </p>
+                <div class="col-sm-6 col-md-6 col-lg-6>">
+                    <p id="branchtext"><br>Take a <strong> picture. </strong> </p>
                 </div>
                  </div>
- </div>
-<div class="row">
+    </div>
+    <div class="row">
                 <div class="branch">
-                    <div class="col-md-6">
-                    <p id="overviewtext">Using our <strong>image recognintion technology,</strong>
-                        we use <strong>Google Cloud Vision</strong> & <strong>Wikipedia</strong> APIs to obtain accature data. </p>
+                    <div class="col-sm-6 col-md-6 col-lg-6>">
+                    <p id="branchtext">Using our <strong>image recognition technology,</strong>
+                        we use <strong>GCV</strong> & <strong>Wikipedia</strong> APIs to <strong>obtain local data.</strong> </p>
                     
                     </div>
                 </div>
                 <div class="branch">
-                    <div class="col-md-6">
-                        <p id="overviewtext"> It can <strong>review your images </strong> and esitmate the likelihood that any given <strong> image includes content. </strong> </p>
+                    <div class="col-sm-6 col-md-6 col-lg-6>">
+                        <p id="branchtext"> It can <strong>review your images </strong> and estimate the likelihood that any given <strong> image includes content. </strong> </p>
                     </div>
                 </div>
- </div>
-
-            </div>
-                    
-                
-             </div>
+    </div>
+    </div>
+    </div>
             
 
         <!-- FEATURES SECTION -->
@@ -111,7 +111,7 @@
                 <div class="col-sm-3 col-md-3 col-lg-3">
                 <i class="fas fa-project-diagram"></i>
                 <br>
-                <span>Search and flitering.</span>
+                <span>Search and filtering.</span>
             </div>
 
             <div class="col-sm-3 col-md-3 col-lg-3">
@@ -129,7 +129,7 @@
              <div class="col-sm-3 col-md-3 col-lg-3">
                 <i class="fas fa-user-friends"></i> 
                 <br>
-                <span>  +  User-friendly</span>
+                <span>+ User-friendly.</span>
             </div>
         </div>
         
@@ -141,9 +141,27 @@
             </div>
 
         <!--footer section -->
-        <footer class="footer">
+        <footer class="miscellaneous">
+            <div class="col-sm-12 col-md-12 col-lg-12">
             <h1> Gooiki Plus</h1>
-            <!-- <p>Gooiki Plus</p> -->
+            <div id="about">Gooiki Plus is a fusion term between<br>Google and Wikipedia.
+                The future is <br> being able to know all about what you are <br> looking at in real time,
+                the future is now.<br>
+                
+            <div id="sabout"><br>Our mission is to make your images searchable.</p>
+            </div>
+
+            
+            <div class="lfooter">
+                <div id="copyright"> @ 2019 Gooiki Plus </div>
+            
+            </div>
+        </div>
+
+               
+
+
+        
             
          </footer>
 
@@ -235,12 +253,6 @@
         }); 
   })
 };
- 
-        
-        
 </script>
-        
-                    
-    
 </body>
 </html>
