@@ -1,0 +1,254 @@
+html, body {
+    margin: 0 auto;
+    scroll-behavior:  smooth;
+}
+    .navbar {
+    padding-left: 60px;
+
+}
+    .navbar-brand {
+    margin-top: 9px;
+    font-size: 30px;
+    font-family: 'Merriweather', serif;
+
+}
+    .banner {
+    color: white;
+    text-align: center;
+    padding-top: 100px;
+}
+    .container1 {
+    background: url("../images/orange.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 455px;
+}
+    h2 {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 47px;
+    color: white;
+}
+   #myImage {
+    width: 400px;
+    height:350px;
+    object-fit: scale-down;
+    float: left;
+    background-color: orange;
+    margin-left: 360px;
+    margin-top: 100px;
+
+}
+    #results {
+    width: 400px;
+    height: 350px;
+    display: inline-block;
+    border: 1px ridge black;
+    margin-top: 100px;
+    margin-left: 70px;
+}
+    .subheading {/* border-bottom */
+                text-align: center;
+                border-bottom: 0.5px solid darkorange;
+                margin-right: 78px;
+                margin-left: 78px;
+}
+    h5 {/* overview, how its works, and features */
+         display: inline-block;
+        text-align: center;
+        padding: 17px;
+        color: darkorange;
+        font-size: 17px;
+        letter-spacing: 0.5px;
+}
+a {
+    color: darkorange;
+}
+a:hover {
+    color: lightgray;
+    text-decoration: none;
+}
+.gooiki-content {
+    text-align: center;
+    margin-top: 90px;
+}
+    p { /* overview text */
+        font-size: 20px;
+        margin-top: 30px;
+}
+/* HOW ITS WORKS SECTION */
+h3 {
+    padding-top: 60px;
+    text-align: center;
+    font-size: 38px;
+}
+#howitworks {
+    margin-top: 140px;
+}
+.branch {
+    width: 535px;
+    height: 162px;
+    margin-top: 45px;
+    margin-left: 30px;
+    background-color: white;
+    display: inline-block;
+}
+#overviewtext {
+    width: 300px;
+    font-size: 18px;
+}
+.col-md-6 {
+    margin-left: 100px;
+    text-align: center;
+    
+}
+.function-section {
+    background-color: #f2f2f2;
+    height: 600px;
+    margin-top: 0px;
+}
+/* FEATURES SECTION */
+#features {  /* lightgray background */
+            height: 332px;;
+            background-color: lightslategray;
+}
+.function-section .row {
+    justify-content: center;
+}
+.row {   /* bluegray background */
+         display: flex;
+         /* margin-left: 160px; */
+}
+i {   /* icons */
+    
+      margin-top: 78px;
+      /* padding-left: 90px; */
+      padding-bottom: 27px;
+}
+span{  /* icons text */
+    
+       /* margin-left: 60px; */
+       font-size: 19px;
+       color: white; 
+
+}
+#features .col-md-3 {
+    text-align: center;
+
+}
+/* features-icon */
+.fa-user-friends {  /* features-icon */
+                    color: white;
+                    font-size: 68px;
+                    opacity: 0.7;
+}
+.fa-file-upload {   /* features-icon */
+                    color: white;
+                    font-size: 68px;
+                    opacity: 0.7;
+}
+.fa-brain {        /* features-icon */
+                  color: white;
+                  font-size: 68px;
+                  opacity: 0.7;
+}
+.fa-project-diagram {  /* features-icon */
+                       color: white;
+                       font-size: 68px;
+                       opacity: 0.7;
+}
+
+/* footer section */
+
+.content {
+    min-height: 55%;
+  }
+    .content-inside {
+    padding: 20px;
+    padding-bottom: 30px;
+  }
+    .footer {
+    height: 30px;
+    border-top: 4px solid darkorange;
+    background-color: lightgray;
+    padding: 20px;
+    text-align: center;
+    font-size: 13px;
+    clear: both;
+    
+  }
+  #filesubmit [type='file'] {
+      color: transparent;
+      margin-top: 20px;
+      display: inline-block;
+      position: relative;
+      left: 0;
+      top: 0;
+      opacity: 100;
+  }
+/* CHOOSE FILE BUTTON */
+input {
+    opacity: 0;
+    padding-top: 15px;
+    padding-left: 75px;
+    padding-bottom: 50px;
+    position: relative;
+    margin-top: 30px;
+    border: 7px dotted #FFCD28;
+    width: 280px;
+    height: 70px;
+    margin-left: 310px;
+    /* color:white; */
+    font-size: 17px;
+    font-family: 'Varela Round', sans-serif;
+    float: left;
+    display: inline-block;
+}
+  /* SUBMIT BUTTON */
+  .file-submit {
+    margin-top: 30px;
+    border: 7px dotted #FFCD28;
+    width: 280px;
+    height: 70px;
+    color: black;
+    background-color: transparent;
+    font-size: 17px;
+    font-family: 'system-ui';
+    float: right;
+    display: inline-block;
+    margin-right: 310px;
+}
+
+   .file-submit:hover {
+        background-color:white;
+    }
+    /* Choose File position text */
+    
+input #pic {
+    opacity: 0;
+} 
+/* how its work section */
+/* BOLD element */
+
+strong {
+    color: orange;
+}
+/* RESULTS */
+#result,
+#result2,
+#result3,
+#result4 {
+    color: black;
+    line-height: 1;
+    margin-left: 15px;
+}
+/* CHOOSE FILE BUTTON */
+#slot {
+    color: black;
+    background-color: white;
+    width: 100px;
+    padding-top:3px;
+    margin-left: 80px;
+    height: 30px;
+}
