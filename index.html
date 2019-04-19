@@ -61,10 +61,10 @@
         <div class="results">
         <img id="myImage" src="">
         <div id="results">
-            <p id="result"></p>
-            <p id="result2"></p>
-            <p id="result3"></p>
-            <p id="result4"></p>
+            <!-- <a href="" id="result"></a>
+            <a href="" id="result2"></a>
+            <a href="" id="result3"></a>
+            <a href="" id="result4"></a> -->
         </div>
         </div>
 
@@ -224,10 +224,53 @@
                     console.log('success', res);
                     $("#pic").hide(); 
                     $("#myImage").attr("src", imgURL).width(400);
-                    $("#result").text(res.responses[0].labelAnnotations[0].description);
-                    $("#result2").text(res.responses[0].labelAnnotations[1].description);
-                    $("#result3").text(res.responses[0].labelAnnotations[2].description);
-                    $("#result4").text(res.responses[0].labelAnnotations[3].description);
+                    $("results").empty();
+
+                    for(var i = 0; i <res.responses[0].labelAnnotations.length; i++){
+                        console.log(res.responses[0].labelAnnotations[i])
+                        let newButton = $("<button/>", 
+                        {
+                            text:res.responses[0].labelAnnotations[i].description,
+                        })
+
+                        $(newButton).on("click", function(){
+                            var queUrl = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + $(this).text() + "&format=json&callback=?";
+                            $.ajax({
+                                url: queUrl,
+                                type: 'GET',
+                                contentType: "aplication/json; charsetu=utf-8",
+                                async:false,
+                                dataType:"json",
+                                success: function(data, status, jqXHR){
+                                    window.location.href = data[3][0];
+                                    console.log(data);
+                                    // $("#output").html();
+                                    // var term = data[1][1];
+                                    // var summary = data[2][1];
+                                    // var link = data[3][1];
+                                    
+                                    // var infoDiv = $("<div>");
+                                    // var termEl = $("<h1>").text(term);
+                                    // var summaryEl = $("<p>").text(summary);
+                                    // var linkEl = $("<a>").text(term).attr("href",link);
+                                    
+                                    // infoDiv.append(termEl,summaryEl,linkEl);
+                                    
+                                    // $("#output").prepend(infoDiv);
+                                }
+                            })
+                            .done(function(){})
+                            .fail (function(){ console.log ("error");})
+                            .always (function(){ console.log('complete');})
+                        });
+
+                        $("#results").append(newButton)
+                    }
+
+                    // $("#result").text(res.responses[0].labelAnnotations[0].description);
+                    // $("#result2").text(res.responses[0].labelAnnotations[1].description);
+                    // $("#result3").text(res.responses[0].labelAnnotations[2].description);
+                    // $("#result4").text(res.responses[0].labelAnnotations[3].description);
                 })
                 .catch(function (err) {
                     console.log('error', err.responseText);
