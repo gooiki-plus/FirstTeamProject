@@ -170,6 +170,7 @@
     var reader = new FileReader();
     reader.onload = function(e) {
       $('#pic').attr('src', e.target.result).width(175).height(220);
+      $('#pic').attr("style","opacity:1").width(175).height(220);
     };
     reader.readAsDataURL(input.files[0]);
   } 
